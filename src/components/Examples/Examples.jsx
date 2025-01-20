@@ -3,6 +3,7 @@ import { useState } from "react";
 import TabButton from "../TabButton/TabButton";
 import { EXAMPLES } from "../../data";
 import Section from "../Section";
+import Tabs from "../TabButton/Tabs";
 
 export default function Examples() {
   const [selectedTopic, SetSelectedTopic] = useState();
@@ -26,33 +27,38 @@ export default function Examples() {
 
   return (
     <Section title="Examples" id="examples">
-      <menu>
-        <TabButton
-          isSelected={selectedTopic === "Components"}
-          onSelect={() => handleSelect("Components")}
-        >
-          Components
-        </TabButton>
-        <TabButton
-          isSelected={selectedTopic === "JSX"}
-          onSelect={() => handleSelect("JSX")}
-        >
-          JSX
-        </TabButton>
-        <TabButton
-          isSelected={selectedTopic === "Props"}
-          onSelect={() => handleSelect("Props")}
-        >
-          Props
-        </TabButton>
-        <TabButton
-          isSelected={selectedTopic === "State"}
-          onSelect={() => handleSelect("State")}
-        >
-          State
-        </TabButton>
-      </menu>
-      {tabContent}
+      <Tabs
+        buttons={
+          <>
+            <TabButton
+              isSelected={selectedTopic === "Components"}
+              onSelect={() => handleSelect("Components")}
+            >
+              Components
+            </TabButton>
+            <TabButton
+              isSelected={selectedTopic === "JSX"}
+              onSelect={() => handleSelect("JSX")}
+            >
+              JSX
+            </TabButton>
+            <TabButton
+              isSelected={selectedTopic === "Props"}
+              onSelect={() => handleSelect("Props")}
+            >
+              Props
+            </TabButton>
+            <TabButton
+              isSelected={selectedTopic === "State"}
+              onSelect={() => handleSelect("State")}
+            >
+              State
+            </TabButton>
+          </>
+        }
+      >
+        {tabContent}
+      </Tabs>
     </Section>
   );
 }
