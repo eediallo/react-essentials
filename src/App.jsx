@@ -31,15 +31,9 @@ function App() {
       <main>
         <section id="core-concepts">
           <ul>
-            {CORE_CONCEPTS.map((coreConcept) => {
-              return (
-                <CoreConcept
-                  image={coreConcept.image}
-                  title={coreConcept.title}
-                  description={coreConcept.description}
-                />
-              );
-            })}
+            {CORE_CONCEPTS.map((conceptItem) => (
+              <CoreConcept {...conceptItem} />
+            ))}
           </ul>
         </section>
         <section id="examples">
