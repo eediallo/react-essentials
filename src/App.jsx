@@ -1,11 +1,30 @@
 import Header from "./components/Header/Header";
+import { CORE_CONCEPTS } from "./data";
+
+function CoreConcept({ image, title, description }) {
+  return (
+    <li>
+      <img src={image} alt={title} />
+      <h3>{title}</h3>
+      <p>{description}</p>
+    </li>
+  );
+}
 
 function App() {
   return (
     <div>
       <Header />
       <main>
-        <h2>Time to get started!</h2>
+        <section id="core-concepts">
+          <ul>
+            <CoreConcept
+              image={CORE_CONCEPTS[0].image}
+              title={CORE_CONCEPTS[0].title}
+              description={CORE_CONCEPTS[0].description}
+            />
+          </ul>
+        </section>
       </main>
     </div>
   );
