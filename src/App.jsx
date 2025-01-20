@@ -6,11 +6,25 @@ import TabButton from "./components/TabButton/TabButton.jsx";
 import { useState } from "react";
 
 function App() {
-  const [selectedTopic, SetSelectedTopic] = useState("Components");
+  const [selectedTopic, SetSelectedTopic] = useState();
 
   function handleSelect(selectedButton) {
     SetSelectedTopic(selectedButton);
   }
+
+  let tabContent = <p>Please select a topic!</p>;
+  if (selectedTopic) {
+    tabContent = (
+      <div>
+        <h3>{EXAMPLES[selectedTopic].title}</h3>
+        <p>{EXAMPLES[selectedTopic].description}</p>
+        <pre>
+          <code>{EXAMPLES[selectedTopic].code}</code>
+        </pre>
+      </div>
+    );
+  }
+
   return (
     <div>
       <Header />
@@ -37,13 +51,7 @@ function App() {
             <TabButton onSelect={() => handleSelect("Props")}>Props</TabButton>
             <TabButton onSelect={() => handleSelect("State")}>State</TabButton>
           </menu>
-          <div>
-            <h3>{EXAMPLES[selectedTopic].title}</h3>
-            <p>{EXAMPLES[selectedTopic].description}</p>
-            <pre>
-              <code>{EXAMPLES[selectedTopic].code}</code>
-            </pre>
-          </div>
+          {tabContent}
         </section>
       </main>
     </div>
